@@ -6,13 +6,12 @@ import Loader from "./Loader";
 import "../styles/styles.css";
 
 export default function StockDetails(props){
-
     const [stockDetails, setStockDetails] = React.useState({});
     const [dateTime, setDateTime] = React.useState(new Date().getTime());
     const [initialFetch, setInitialFetch] = React.useState(true);
     const [liveStockData, setLiveStockData] = React.useState({});
     const [loader, setLoader] = React.useState(true);
-
+    
     React.useEffect(() => {
         setLoader(true);
         const stockId = props?.match?.params?.id;

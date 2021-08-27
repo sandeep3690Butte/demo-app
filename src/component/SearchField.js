@@ -1,11 +1,15 @@
 import React from "react";
 import {useHistory} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+
+import {addToViewHistory} from "./actions/stockHistory";
 import "../styles/styles.css";
 
 export default function SearchField(props){
     const [searchData, setSearchData] = React.useState([]);
     const [serachKeyword, setSearchKeyword] = React.useState();
     const history = useHistory();
+    const dispatch = useDispatch();
     let timerId;
 
     // React.useEffect(() => {
@@ -32,6 +36,7 @@ export default function SearchField(props){
 
     const navigateToStockDetails = value => {
         setSearchData([]);
+        dispatch(addToViewHistory(value));
         history.push(`/stockDetails/${value}`);
     }
 
